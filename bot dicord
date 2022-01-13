@@ -58,3 +58,41 @@ let cmds = {
   pause: { cmd: 'pause', a: [''] },
   resume: { cmd: 'resume', a: ['r',''] },
   volume: { cmd: 'volume', a: ['vol',''] },
+
+    }
+  }
+});
+
+
+
+
+
+client.on('message', message => {
+  var helplist = `**:notes:  The list of commands ** 
+
+\`Play\` : Play the song, add it to the list, or complete the song [p] 
+\`Pause\` : Pause the song 
+\`Resume\` : Complete the song
+\`stop\` : To stop the song and exit the bot from the room
+\`forceskip\` : To skip the song directly
+\`Queue\` : Show Queue
+\`skipto\` : To skip the song to the next song in the next music queue
+\`Skip\` : Skip to the next song
+\`Volume\` : changing the voice [vol] 
+\`Nowplaying\` : Show what's playing now [np] 
+\`repeat\` : Repeat the song
+\`Leave\` : Exit the audio room
+
+
+`
+  if(message.content === prefix + 'help') {
+            message.delete(1000)
+    let e = '\`Special orders were sent\`'
+	  message.reply(e).then(m => m.delete(10000))
+	  message.author.send(helplist).catch(error => message.reply('** I could not send the orders to you, please open yours :negative_squared_cross_mark:**'))
+}
+});
+
+
+
+client.login('OTI5NDExMjg0NDk0MDU3NDgy.Ydm7tQ.piy_v9TpCo03CXt0UmtJxrELI2w');
