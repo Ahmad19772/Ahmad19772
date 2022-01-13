@@ -1,0 +1,60 @@
+
+
+const http = require('http');
+const express = require('express');
+const app = express();
+app.get("/", (request, response) => {
+  response.sendStatus(200);
+});
+app.listen(process.env.PORT);
+setInterval(() => {
+  http.get(`http://name.glitch.me/`); //
+}, 280000);
+
+//كل البكجات
+const Discord = require('discord.js');
+const converter = require('number-to-words');
+const moment = require('moment');
+const dateformat = require('dateformat');
+const ms = require('parse-ms')
+const client = new Discord.Client({ disableEveryone: true});
+const bot = new Discord.Client();
+const fs = require('fs');
+const request = require('request');
+const r1 = require('snekfetch');
+const Canvas = require("canvas");
+const jimp = require('jimp')
+const weather = require('weather-js');
+const pretty = require("pretty-ms");
+client.on('warn', console.warn);
+client.on('error', console.error);
+
+const CHANNELID = '911940929642975262'; 
+
+
+const prefix = ":"; 
+
+client.on("ready", () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
+client.on("ready", () => {
+  client.user.setStatus("idle");
+});
+client.on('ready', () => {
+    client.user.setActivity(`Type ${prefix}MAFIA WASR`,{ type: 'WATCHING' });
+})
+
+
+
+
+client.commands = new Discord.Collection();
+client.aliases = new Discord.Collection();
+
+
+let cmds = {
+  play: { cmd: 'play', a: ['b.p', ''] },
+  skip: { cmd: 'skip', a: ['s', ''] },
+  stop: { cmd: 'stop', a: [''] },
+  pause: { cmd: 'pause', a: [''] },
+  resume: { cmd: 'resume', a: ['r',''] },
+  volume: { cmd: 'volume', a: ['vol',''] },
